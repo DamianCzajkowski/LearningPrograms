@@ -1,0 +1,30 @@
+A B C D E 
+G H ! A F 
+F F G B G 
+E E D C H 
+D C B A ! 
+
+H ! A B C 
+E F G H D 
+D D E ! E 
+C C B A F 
+B A ! H G 
+
+F G H ! A 
+C D E F B 
+B B C G C 
+A A ! H D 
+! H G F E 
+
+D E F G H 
+A B C D ! 
+! ! A E A 
+H H G F B 
+G F E D C 
+
+B C D E F 
+H ! A B G 
+G G H C H 
+F F E D ! 
+E D C B A 
+
