@@ -5,12 +5,12 @@ from exceptions import MatrixOperationException, MatrixIndexException
 def menu():
     while True:
         case = input("""1) Wczytaj macierz A
-2) Wczytaj macierz B
-3) Wyświetl A
-4) Wyświetl B
-5) Wykonaj A+B
-6) Wykonaj A*B
-7) Wyjście\n""")
+                        2) Wczytaj macierz B
+                        3) Wyświetl A
+                        4) Wyświetl B
+                        5) Wykonaj A+B
+                        6) Wykonaj A*B
+                        7) Wyjście\n""")
         if case == "1":
             n = int(input("podaj n: "))
             m = int(input("podaj m: "))
