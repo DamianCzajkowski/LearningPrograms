@@ -56,7 +56,7 @@ void dijkstra(int **weights_graph, int *distance, int n, int source = 1)
 
         for (int j = 0; j < n + 1; j++)
         {
-            if (!visited[j] && distance[min_v_d_id] < INF / 2 && distance[min_v_d_id] + weights_graph[min_v_d_id][j] < distance[j])
+            if (!visited[j] && distance[min_v_d_id] != INF && distance[min_v_d_id] + weights_graph[min_v_d_id][j] < distance[j])
             {
                 distance[j] = distance[min_v_d_id] + weights_graph[min_v_d_id][j];
             }
@@ -115,35 +115,37 @@ int main()
     OutputFile << endl;
 
     for (int i = 0; i < n + 1; i++)
+    {
+
         for (int j = 0; j < n + 1; j++)
-            weights_graph[i][j] = weights_graph[i][j] + distance[i] - distance[j];
+        {
+            if (weights_graph[i][j] != INF)
+            {
+                weights_graph[i][j] = weights_graph[i][j] + distance[i] - distance[j];
+            }
+        }
+    }
+
     for (int i = 0; i < n + 1; i++)
     {
         OutputFile << "[" << i << "]\t";
         for (int j = 1; j < n + 1; j++)
         {
-            if (weights_graph[i][j] < INF / 2 && j != i)
+            if (weights_graph[i][j] != INF && j != i)
             {
                 OutputFile << j << "(" << weights_graph[i][j] << ") ";
             }
         }
         OutputFile << endl;
     }
-    for (int i = 0; i < n + 1; i++)
-    {
-        for (int j = 1; j < n + 1; j++)
-        {
-            if (weights_graph[i][j] > INF / 2)
-                weights_graph[i][j] = INF;
-        }
-    }
+
     for (int i = 1; i < n + 1; i++)
     {
         dijkstra(weights_graph, dijkstra_distance, n, i);
         OutputFile << "Delta^[" << i << "][";
         for (int j = 1; j < n + 1; j++)
         {
-            if (dijkstra_distance[j] < INF / 2)
+            if (dijkstra_distance[j] != INF)
                 OutputFile << dijkstra_distance[j] << " ";
             else
                 OutputFile << "∞ ";
@@ -151,7 +153,7 @@ int main()
         OutputFile << "],D[" << i << "][";
         for (int j = 1; j < n + 1; j++)
         {
-            if (dijkstra_distance[j] < INF / 2)
+            if (dijkstra_distance[j] != INF)
                 OutputFile << dijkstra_distance[j] + distance[j] - distance[i] << " ";
             else
                 OutputFile << "∞ ";
