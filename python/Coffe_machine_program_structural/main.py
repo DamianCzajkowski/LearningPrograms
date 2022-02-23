@@ -31,10 +31,14 @@ resources = {
     "money": 0
 }
 
+
 class NoResourcesException(Exception):
     pass
+
+
 class NotEnoughMoneyException(Exception):
     pass
+
 
 def print_report():
     print(f"Water: {resources['water']}ml")
@@ -50,6 +54,7 @@ def validate_resources(choice):
             raise NoResourcesException(f"Sorry there is not enough {key}")
     return True
 
+
 def process_coins(choice):
     print("Insert coins")
     quarter = int(input("Insert quarter: "))
@@ -63,21 +68,21 @@ def process_coins(choice):
         print(f"Here is ${sum_of_coins-MENU[choice]['cost']} dollars in change.")
     return MENU[choice]["cost"]
 
+
 def made_coffee(choice):
     try:
         validate_resources(choice)
     except NoResourcesException as e:
         print(e)
-    
+
     try:
         money = process_coins(choice)
         resources["money"] += money
     except NotEnoughMoneyException as e:
         print(e)
-    
+
     for key, value in MENU[choice]["ingredients"].items():
         resources[key] -= value
-
 
 
 def menu():
@@ -89,7 +94,7 @@ def menu():
             return
         if coffee_choice == "report":
             print_report()
-        
+
         if coffee_choice not in MENU.keys():
             print("There is no choice like that :)")
             continue
@@ -97,6 +102,7 @@ def menu():
         made_coffee(coffee_choice)
 
         print(f"Here is your {coffee_choice}. Enjoy!")
+
 
 if __name__ == "__main__":
     menu()
