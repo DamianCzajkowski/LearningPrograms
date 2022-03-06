@@ -1,6 +1,3 @@
-from dataclasses import replace
-
-
 def find_min_operation(s1, s2, index1, index2):
     if index1 == len(s1):
         return len(s2) - index2

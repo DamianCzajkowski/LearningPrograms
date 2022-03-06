@@ -11,7 +11,7 @@ class DisjointSet:
     def find(self, item):
         if self.parent[item] == item:
             return item
-        return self.fing(self.parent[item])
+        return self.find(self.parent[item])
 
     def union(self, x, y):
         x_root = self.find(x)
